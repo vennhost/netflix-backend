@@ -26,6 +26,19 @@ router.get("/:id", async (req, res) => {
     res.send(movie)
 })
 
+router.post("/", async (req, res) => {
+    const movies = await getMovies()
+    const newMovie = {
+        ...req.body,
+        imdbID: "tt"+new Date().valueOf()
+    }
+
+    movies.push(newMovie)
+    await fs.writeFile(filePath, JSON.stringify(movies))
+
+    res.send("created")
+})
+
 
 
 module.exports = router;

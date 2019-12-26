@@ -6,7 +6,7 @@ require('dotenv').config()
 
 const server = express();
 
-var whitelist = ['http://localhost:3000', 'http://localhost:3001', 
+var whitelist = ['http://localhost:3005', 'http://localhost:3001', 
                  'http://m5-d7-oct19-fe.herokuapp.com', 'https://vennbook.herokuapp.com', 'http://vennbook.herokuapp.com', 'https://m5-d7-oct19-fe.herokuapp.com', process.env.FE_URL]
 var corsOptions = {
     origin: function (origin, callback) {
@@ -27,7 +27,7 @@ console.log(process.env.FE_URL) */
 //server.use()
 server.use(express.json())
 
-server.use("/media", cors(corsOptions), moviesRouter)
+server.use("/media", /* cors(corsOptions), */ moviesRouter)
 //server.use("/comments", commentsRouter)
 
 
